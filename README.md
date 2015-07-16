@@ -22,7 +22,73 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+After installing the gem just require the 'dependencies' file that wraps together the whole application and off you go!
+
+The obejcts generated Automatically have a base url to connect to and retrieve data via the DataCreator module, which parses and returns corresponding obejcts to the method calls.
+
+Each object method is listed here:
+
+## User
+```
+user = User.fetch_single_user(username)
+user = User.fetch_all_users
+```
+
+## Orgs
+```
+org = Org.fetch_single_org(organization_name)
+org = Org.fetch_all_orgs
+```
+## Repos
+```
+repos = Repo.fetch_user_repos(username)
+repos = Repo.fetch_org_repos(organization_name)
+repos = Repo.fetch_all_repos
+repo = Repo.fetch_single_repo(repo_owner, repo_name)
+```
+
+Using the wrapper is simple. Just declare your new objects:
+```
+user = User.fetch_single_user(username)
+```
+And call the desired methods:
+```
+user.name
+user.email
+user.location
+```
+
+Each class (Users, Repos and Orgs) has their unique attributes
+
+User has:
+
+```
+user.name
+user.email
+user.location
+user.username
+```
+Organizations have: 
+
+```
+org.id
+org.name
+org.site
+org.location
+org.public_repos
+org.followers
+org.members
+```
+
+Repos have:
+```
+repo.name
+repo.url
+repo.language
+repo.stars
+```
+
+It is worth noting that due to the Github API format, not all attributes are available to every method call. Such examples are included in the fetch.rb file.
 
 ## Development
 
@@ -32,7 +98,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/gitwrap. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/oelizondo/gitwrap. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
