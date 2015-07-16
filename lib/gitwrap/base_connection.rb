@@ -1,5 +1,5 @@
-$LOAD_PATH << '.'
-require_relative 'data_creator.rb'
+$: << 'lib'
+require 'gitwrap/data_creator'
 
 class GithubConnection
 	include DataCreator

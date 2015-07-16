@@ -1,7 +1,0 @@
-require 'open-uri'
-require 'json'
-require './lib/gitwrap/base_connection.rb'
-require './lib/gitwrap/data_creator.rb'
-require './lib/gitwrap/users.rb'
-require './lib/gitwrap/orgs.rb'
-require './lib/gitwrap/repos.rb'

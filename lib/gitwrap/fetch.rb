@@ -1,5 +1,3 @@
-require './dependencies.rb'
-
 # puts "Type user's username "
 # username = gets.chomp
 
