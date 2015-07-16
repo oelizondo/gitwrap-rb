@@ -1,0 +1,7 @@
+require 'open-uri'
+require 'json'
+require './lib/classes/base_connection.rb'
+require './lib/data_creator.rb'
+require './lib/classes/users.rb'
+require './lib/classes/orgs.rb'
+require './lib/classes/repos.rb'
