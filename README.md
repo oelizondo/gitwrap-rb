@@ -1,6 +1,6 @@
 # Gitwrap
 
-Welcome to GitWrap! A simple client wrapepr that interacts with the GitHub API. What does it do? It basically renders public data from Users, Repositories and Organizations. These include name, email, location, stars, etc. 
+Welcome to GitWrap! A simple client wrapper that interacts with the GitHub API. What does it do? It basically renders public data from Users, Repositories and Organizations. These include name, email, location, stars, etc. 
 
 ## Installation
 
@@ -22,7 +22,7 @@ Or install it yourself as:
 
 After installing the gem just include it in your gemfile and off you go!
 
-The obejcts generated Automatically have a base url to connect to and retrieve data via the DataCreator module, which parses and returns corresponding obejcts to the method calls.
+The obejcts are generated automatically. They have a base url to connect to and retrieve data via the DataCreator module, which parses and returns corresponding obejcts to the method calls.
 
 Each object method is listed here:
 
@@ -56,9 +56,9 @@ user.email
 user.location
 ```
 
-Each class (Users, Repos and Orgs) has their unique attributes
+Each class (Users, Repos and Orgs) has their unique attributes.
 
-User has:
+Users have:
 
 ```
 user.name
@@ -96,7 +96,7 @@ It is worth noting that due to the Github API format, not all attributes are ava
 3. Create a pull request.
 
 ##Current Version
-Version 0.6.0
+Version 0.7.0
 
 ## License
 
