@@ -1,7 +1,7 @@
 $: << 'lib'
-require 'gitwrap/data_creator'
 require 'json'
 require 'open-uri'
+require 'gitwrap/data_creator'
 
 class GithubConnection
 	include DataCreator
