@@ -22,7 +22,7 @@ Or install it yourself as:
 
 After installing the gem just include it in your gemfile and off you go!
 
-The obejcts are generated automatically. They have a base url to connect to and retrieve data via the DataCreator module, which parses and returns corresponding obejcts to the method calls.
+The objects are generated automatically. They have a base url to connect to and retrieve data via the DataCreator module, which parses and returns corresponding obejcts to the method calls.
 
 Each object method is listed here:
 
