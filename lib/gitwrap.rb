@@ -1,6 +1,7 @@
-require "gitwrap/version"
 require 'json'
 require 'open-uri'
+require "gitwrap/version"
+require "gitwrap/data_creator"
 
 module Gitwrap
 	class GithubConnection
