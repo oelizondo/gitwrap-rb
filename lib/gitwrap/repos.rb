@@ -2,6 +2,8 @@ module Gitwrap
 	class Repo < GithubConnection
 		attr_accessor :name, :url, :forks_count, :language, :stars
 		$current_repo = 0
+		$all_repos = []
+		$all_org_repos = []
 
 		def initialize(hash)
 			@name = hash["name"]
@@ -12,21 +14,30 @@ module Gitwrap
 		end
 
 		def self.fetch_user_repos(username)
-			repo = Repo.new({}).create_user_repos("#{BASE_URL}users/#{username}/repos")
+			data = open("#{BASE_URL}users/#{username}/repos").read()
+			data = JSON.parse(data)
+			repo = new(data)
 		end
 
 		def self.fetch_org_repos(org)
-			repos = Repo.new({}).create_org_repos("#{BASE_URL}orgs/#{org}/repos")
+			data = open("#{BASE_URL}orgs/#{org}/repos").read()
+			data = JSON.parse(data)
+			data.each {|repo| $all_org_repos << new(repo) }
+			$all_org_repos
 		end
 
 		def self.fetch_all_repos
-			repos = Repo.new({}).create_many_repos("#{BASE_URL}repositories")
+			data = open("#{BASE_URL}repositories").read()
+			data = JSON.parse(data)
+			data.each { |repo| $all_repos << new(repo) }
 			$current_repo += repos.length-1
-			repos
+			$all_repos
 		end
 
 		def self.fetch_single_repo(username, repo)
-			repo = Repo.new({}).create_single_repo("#{BASE_URL}repos/#{username}/#{repo}")
+			data = open("#{BASE_URL}repos/#{username}/#{repo}").read()
+			data = JSON.parse(data)
+			repo = new(data)
 		end
 	end
 end
