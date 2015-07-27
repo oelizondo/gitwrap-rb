@@ -1,6 +1,3 @@
-$: << 'lib'
-require 'gitwrap/base_connection.rb'
-
 module Gitwrap
 	class User < GithubConnection
 		attr_accessor :name, :location, :email, :username

@@ -1,6 +1,3 @@
-$: << 'lib'
-require 'gitwrap/base_connection.rb'
-
 module Gitwrap
 	class Repo < GithubConnection
 		attr_accessor :name, :url, :forks_count, :language, :stars

@@ -46,6 +46,6 @@ module DataCreator
 
 	def create_single_repo(url)
 		Repo.new(parse_data(url))
-	endn
-
+	end
+end
 end
