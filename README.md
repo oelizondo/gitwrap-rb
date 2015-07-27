@@ -96,7 +96,7 @@ It is worth noting that due to the Github API format, not all attributes are ava
 3. Create a pull request.
 
 ##Current Version
-Version 0.7.0
+Version 1.5.0
 
 ## License
 
