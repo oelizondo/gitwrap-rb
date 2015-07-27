@@ -1,5 +1,5 @@
-require 'json'
 require 'open-uri'
+require 'json'
 require "gitwrap/version"
 
 module Gitwrap
