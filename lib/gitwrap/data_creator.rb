@@ -48,4 +48,3 @@ module DataCreator
 		Repo.new(parse_data(url))
 	end
 end
-end
