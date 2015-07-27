@@ -1,8 +1,8 @@
+# require 'json'
+# require 'open-uri'
 # require './base_connection.rb'
-# require './users.rb'
 # # puts "Type user's username "
 # # username = gets.chomp
-
 # # puts '---------USERS--------'
 
 # u = User.fetch_single_user('oelizondo')

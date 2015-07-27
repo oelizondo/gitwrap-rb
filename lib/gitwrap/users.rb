@@ -1,10 +1,10 @@
 module Gitwrap
 	class User < GithubConnection
-		attr_accessor :name, :location, :email, :username
+		attr_reader :name, :location, :email, :username
 		$current_id = 0
 		$all_users = []
 
-		def initialize(hash)
+		def initialize(hash={})
 			@name = hash['name']
 			@location = hash['location']
 			@email = hash['email']

@@ -1,9 +1,9 @@
 module Gitwrap
 	class Org < GithubConnection
-		attr_accessor :name, :site, :location, :public_repos, :followers, :members, :id
+		attr_reader :name, :site, :location, :public_repos, :followers, :members, :id
 		$current_org = 0
 		$all_orgs = []
-		
+
 		def initialize(hash)
 			@id = hash["id"]
 			@name = hash["login"]

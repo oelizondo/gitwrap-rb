@@ -1,6 +1,6 @@
 module Gitwrap
 	class Repo < GithubConnection
-		attr_accessor :name, :url, :forks_count, :language, :stars
+		attr_reader :name, :url, :forks_count, :language, :stars
 		$current_repo = 0
 		$all_repos = []
 		$all_org_repos = []
