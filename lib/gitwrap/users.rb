@@ -1,28 +1,37 @@
+require 'gitwrap/error'
+
 module Gitwrap
-	class User < GithubConnection
-		attr_reader :name, :location, :email, :username
-		$current_id = 0
-		$all_users = []
+	class User < OpenStruct
+		include HTTParty
 
-		def initialize(hash={})
-			@name = hash['name']
-			@location = hash['location']
-			@email = hash['email']
-			@username = hash['login']
+		base_uri "https://api.github.com/users"
+
+		current_id = 0
+		users = []
+
+		def self.fetch_single_user(username, options = {})
+			response = get("/#{username}", {query: options})
+			if response.success? then user = new(response) else raise_exception(response.code, response.body) end
 		end
 
-		def self.fetch_single_user(username)
-			data = open("#{BASE_URL}users/#{username}").read()
-			data = JSON.parse(data)
-			user = new(data)
+		def self.fetch_all_users(current_id, options = {})
+			response = get("?since=#{current_id}", {query: options})
+			puts response
+			# if response.success?
+			# 	response.each { |user| users << new(user)}
+			# 	current_id += reponse.length
+			# 	users
+			# else
+			# 	raise_exception(responde.code, response.body)
+			# end
 		end
 
-		def self.fetch_all_users
-			data = open("#{BASE_URL}users?since=#{$current_id}").read()
-			data = JSON.parse(data)
-			data.each {|user| $all_users << new(user)}
-			$current_id += $all_users.length-1
-			$all_users
-		end
+		private
+
+			def raise_exception(code, body)
+				raise Gitwrap::Exception::ServerError.new(code, body) if code >=  500
+				raise Gitwrap::Exception::ClientError.new(code, body) if core < 500
+			end
+
 	end
 end

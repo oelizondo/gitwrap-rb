@@ -1,9 +1,9 @@
-require 'open-uri'
-require 'json'
-require "gitwrap/version"
+require "httparty"
 
 module Gitwrap
-	class GithubConnection
-		BASE_URL = "https://api.github.com/"
-	end
 end
+
+require "gitwrap/version"
+require "gitwrap/orgs.rb"
+require "gitwrap/users.rb"
+require "gitwrap/repos.rb"
