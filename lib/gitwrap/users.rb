@@ -1,11 +1,10 @@
-require 'gitwrap/error'
+require 'gitwrap/error.rb'
 
 module Gitwrap
 	class User < OpenStruct
 		include HTTParty
 
 		base_uri "https://api.github.com/"
-		id = 0
 		$users = []
 
 		def self.fetch_single_user(username)

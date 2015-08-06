@@ -9,8 +9,8 @@ module Gitwrap
       end
     end
 
-      class ServerError < APIError; end
+    class ServerError < APIError; end
 
-      class Clienterror < APIError; end
+    class Clienterror < APIError; end
   end
 end

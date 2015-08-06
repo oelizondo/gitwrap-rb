@@ -1,32 +1,60 @@
+require 'gitwrap/error.rb'
+
 module Gitwrap
 	class Repo < OpenStruct
+		include HTTParty
 
-		current_repo = 0
-		all_repos = []
-		all_org_repos = []
+		base_uri "https://api.github.com/"
+		$repos = []
 
-		def self.fetch_user_repos(username, options = {})
-			response = get("users/#{username}/repos", { query: options })
-			if response.success? then response.each { |repo| all_repos << new(repo) } else raise_exception(response.code, response.body) end
-			all_repos
+		def self.fetch_user_repos(username)
+			$repos = []
+			response = get("/users/#{username}/repos")
+			if response.success?
+				response = response.parsed_response
+				response.each {|repo| $repos << new(repo)}
+			else
+				raise_exception(response.code, response.body)
+			end
+			$repos
 		end
 
-		def self.fetch_org_repos(org, options = {})
-			response = get("orgs/#{org}/repos", { query: options })
-			if response.success? then response.each { |repo| all_org_repos << new(repo) } else raise_exception(response.code, response.body) end
-			all_org_repos
+		def self.fetch_org_repos(org)
+			response = get("/orgs/#{org}/repos")
+			if response.success?
+				response = response.parsed_response
+				response.each {|repo| $repos << new(repo)}
+			else
+				raise_exception(response.code, response.body)
+			end
+			$repos
 		end
 
-		def self.fetch_all_repos(options = {})
-			response = get("repositories?since#{current_repo}", { query: options })
-			if response.success? then response.each { |repo| all_repos << new(repo) } else raise_exception(response.code, response.body) end
-			current_repo += 1
-			all_repos
+		def self.fetch_all_repos(repo_id)
+			response = get("/repositories?since#{repo_id}")
+			if response.success?
+				response = response.parsed_response
+				response.each {|repo| $repos << new(repo)}
+			else
+				raise_exception(response.code, response.body)
+			end
+			$repos
 		end
 
-		def self.fetch_single_repo(username, repo, options = {})
-			response = get("repos/#{username}/#{repo}", { query: options })
+		def self.fetch_single_repo(username, repo)
+			response = get("/repos/#{username}/#{repo}")
 			if response.success? then repo = new(response) else raise_exception end
+		end
+
+		def self.fetch_repos_by_language(language)
+			response = get("/search/repositories?q=language:#{language}&sort=stars&order=desc&per_page=100")
+			if response.success?
+				response = response["items"]
+				response.each { |repo| $repos << new(repo)}
+			else
+				raise_exception(response.code, response.body)
+			end
+			$repos
 		end
 
 		private

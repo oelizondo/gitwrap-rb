@@ -1,20 +1,23 @@
+require 'gitwrap/error.rb'
+
 module Gitwrap
 	class Org < OpenStruct
+		include HTTParty
 
-		current_org = 0
-		orgs = []
+		base_uri "https://api.github.com/"
+		$orgs = []
 
-		def self.fetch_single_org(organization, options = {})
-			response = get("orgs/#{organization}", { query: options })
+		def self.fetch_single_org(organization)
+			response = get("/orgs/#{organization}")
 			if response.success? then org = new(response) else  raise_exception(response.code, response.body) end
 		end
 
-		def self.fetch_all_orgs(options = {})
-			response = get("organizations?since=#{current_org}", {query: options})
+		def self.fetch_all_orgs(org_id)
+			response = get("/organizations?since=#{org_id}&per_page=100")
 			if response.success?
-				response.each { |org| orgs << new(org)}
-				current_org += response.length
-				orgs
+				response = response.parsed_response
+				response.each { |org| $orgs << new(org)}
+				$orgs
 			else
 				raise_exception(response.code, response.body)
 			end
