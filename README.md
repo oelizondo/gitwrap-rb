@@ -27,7 +27,7 @@ The objects are generated automatically. They have a base url to connect to and 
 Each object method is listed here:
 
 ## Users
-```
+```ruby
 user = Gitwrap::User::fetch_single_user(username)
 users = Gitwrap::User::fetch_all_users(since_id)
 users = Gitwrap::User::fetch_users_by_location(location)
@@ -36,12 +36,12 @@ users = Gitwrap::User::fetch_users_by_location_and_language(location, language)
 ```
 
 ## Orgs
-```
+```ruby
 org = Gitwrap::Org::fetch_single_org(organization_name)
 org = Gitwrap::Org::fetch_all_orgs(since_id)
 ```
 ## Repos
-```
+```ruby
 repos = Gitwrap::Repo::fetch_user_repos(username)
 repos = Gitwrap::Repo::fetch_org_repos(organization_name)
 repos = Gitwrap::Repo::fetch_all_repos(since_id)
@@ -50,21 +50,21 @@ repos = Gitwrap::Repo::fetch_repos_by_language(language)
 ```
 
 Using the wrapper is simple. Just declare your new objects:
-```
+```ruby
 user = Gitwrap::User::fetch_single_user(username)
 ```
 And call the desired methods:
-```
+```ruby
 user.name
 user.email
 user.location
 ```
 
-Each class (Users, Repos and Orgs) has their unique attributes.
+Each class (Users, Repos and Orgs) has its unique attributes.
 
 Users have:
 
-```
+```ruby
 user.name
 user.email
 user.location
@@ -73,7 +73,7 @@ user...
 ```
 Organizations have:
 
-```
+```ruby
 org.id
 org.name
 org.site
@@ -85,7 +85,7 @@ org...
 ```
 
 Repos have:
-```
+```ruby
 repo.name
 repo.url
 repo.language
