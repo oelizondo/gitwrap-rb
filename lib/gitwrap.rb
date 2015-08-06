@@ -1,4 +1,6 @@
-require "httparty"
+require 'json'
+require 'open-uri'
+require 'httparty'
 
 module Gitwrap
 end

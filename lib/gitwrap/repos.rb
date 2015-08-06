@@ -1,8 +1,5 @@
 module Gitwrap
 	class Repo < OpenStruct
-		include HTTParty
-
-		base_uri "https://api.github.com/"
 
 		current_repo = 0
 		all_repos = []
@@ -15,7 +12,7 @@ module Gitwrap
 		end
 
 		def self.fetch_org_repos(org, options = {})
-			response = get("orgs/#{org}/repos")
+			response = get("orgs/#{org}/repos", { query: options })
 			if response.success? then response.each { |repo| all_org_repos << new(repo) } else raise_exception(response.code, response.body) end
 			all_org_repos
 		end
@@ -24,7 +21,7 @@ module Gitwrap
 			response = get("repositories?since#{current_repo}", { query: options })
 			if response.success? then response.each { |repo| all_repos << new(repo) } else raise_exception(response.code, response.body) end
 			current_repo += 1
-			all_repos  
+			all_repos
 		end
 
 		def self.fetch_single_repo(username, repo, options = {})
