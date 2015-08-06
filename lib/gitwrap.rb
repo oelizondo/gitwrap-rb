@@ -1,5 +1,3 @@
-require 'json'
-require 'open-uri'
 require 'httparty'
 
 module Gitwrap
@@ -9,3 +7,4 @@ require "gitwrap/version"
 require "gitwrap/orgs.rb"
 require "gitwrap/users.rb"
 require "gitwrap/repos.rb"
+require "gitwrap/error.rb"
