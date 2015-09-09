@@ -1,4 +1,6 @@
-require 'gitwrap/error.rb'
+require 'gitwrap/error'
+require 'ostruct'
+require 'httparty'
 
 module Gitwrap
 	class User < OpenStruct
