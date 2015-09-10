@@ -1,4 +1,6 @@
 require 'gitwrap/error.rb'
+require 'ostruct'
+require 'httparty'
 
 module Gitwrap
 	class Repo < OpenStruct
