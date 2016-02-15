@@ -1,6 +1,6 @@
 # Gitwrap
 
-!(Build)[https://travis-ci.org/oelizondo/gitwrap-rb.svg?branch=master]
+![Build](https://travis-ci.org/oelizondo/gitwrap-rb.svg?branch=master)
 
 Welcome to GitWrap! A simple client wrapper that interacts with the GitHub API. What does it do? It basically renders public data from Users, Repositories and Organizations. These include name, email, location, stars, etc.
 
