@@ -101,7 +101,7 @@ It is worth noting that due to the Github API format, not all attributes are ava
 2. Commit your changes.
 3. Create a pull request!
 
-##Heroes
+##Author
 
 ###Oscar Elizondo
 
