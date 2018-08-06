@@ -42,7 +42,7 @@ users = Gitwrap::User::fetch_users_by_location_and_language(location, language)
 org = Gitwrap::Org::fetch_single_org(organization_name)
 org = Gitwrap::Org::fetch_all_orgs(since_id)
 ```
-## Repos
+## Repos
 ```ruby
 repos = Gitwrap::Repo::fetch_user_repos(username)
 repos = Gitwrap::Repo::fetch_org_repos(organization_name)
@@ -103,14 +103,14 @@ It is worth noting that due to the Github API format, not all attributes are ava
 2. Commit your changes.
 3. Create a pull request!
 
-##Author
+## Author
 
-###Oscar Elizondo
+### Oscar Elizondo
 
 * http://twitter.com/oehinojosa
 * http://github.com/oelizondo
 
-##Current Version
+## Current Version
 Version 2.5.0
 
 ## License
